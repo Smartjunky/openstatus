@@ -1,23 +1,24 @@
-# Basis-Image mit Ubuntu (du kannst auch debian:bookworm nehmen)
 FROM ubuntu:22.04
 
-# Devbox installieren
+# Basis-Pakete für Devbox installieren
 RUN apt-get update && apt-get install -y curl git sudo ca-certificates && \
-    curl -fsSL https://get.jetify.com/devbox | bash && \
-    mv devbox /usr/local/bin/ && \
     rm -rf /var/lib/apt/lists/*
 
-# Setze Arbeitsverzeichnis
+# Devbox installieren
+RUN curl -fsSL https://get.jetify.com/devbox | bash && \
+    mv devbox /usr/local/bin/devbox
+
+# Arbeitsverzeichnis setzen
 WORKDIR /app
 
-# Kopiere Repo-Code ins Image
+# Projekt ins Image kopieren
 COPY . .
 
-# Installiere Abhängigkeiten über devbox
+# Dependencies installieren
 RUN devbox install
 
-# Exponiere den Port (falls deine Web-App auf 3000 läuft)
+# Expose Port (Next.js default ist 3000, falls in devbox.json nichts anderes steht)
 EXPOSE 3000
 
-# Starte NUR apps/web + packages/db
-CMD ["devbox", "run", "turbo", "run", "dev", "--filter=./apps/web", "--filter=./packages/db"]
+# Services starten
+CMD ["devbox", "services", "up"]
