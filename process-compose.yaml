@@ -27,7 +27,7 @@ processes:
   dev:
     namespace: dev
     command: |
-      pnpm dev:web
+      pnpm dev:web -- --hostname 0.0.0.0
     is_tty: true
     depends_on:
       init_dx:
