@@ -4,8 +4,8 @@ FROM ubuntu:22.04
 RUN apt-get update && apt-get install -y curl git sudo ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
-# Devbox installieren
-RUN curl -fsSL https://get.jetify.com/devbox | bash && \
+# Devbox installieren (non-interactive)
+RUN curl -fsSL https://get.jetify.com/devbox | bash -s -- -f && \
     mv devbox /usr/local/bin/devbox
 
 # Arbeitsverzeichnis setzen
