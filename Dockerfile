@@ -5,8 +5,7 @@ RUN apt-get update && apt-get install -y curl git sudo ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
 # Devbox installieren (non-interactive)
-RUN curl -fsSL https://get.jetify.com/devbox | bash -s -- -f && \
-    mv devbox /usr/local/bin/devbox
+RUN curl -fsSL https://get.jetify.com/devbox | bash -s -- -f
 
 # Arbeitsverzeichnis setzen
 WORKDIR /app
