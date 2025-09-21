@@ -2,7 +2,7 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
-    "start": "turbo run start --filter='./apps/web'"
+    "start": "turbo run start --filter='./apps/web'",
     "dev": "turbo run dev",
     "env": "bun env.ts",
     "lint": "biome lint .",
