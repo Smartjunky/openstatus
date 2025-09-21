@@ -19,5 +19,5 @@ RUN devbox install
 # Exponiere den Port (falls deine Web-App auf 3000 läuft)
 EXPOSE 3000
 
-# Starte alle Services (z. B. Next.js, DB etc.)
-CMD ["devbox", "services", "up"]
+# Starte NUR apps/web + packages/db
+CMD ["devbox", "run", "turbo", "run", "dev", "--filter=./apps/web", "--filter=./packages/db"]
