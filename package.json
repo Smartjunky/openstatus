@@ -10,7 +10,7 @@
     "format:fix": "pnpm biome check --fix --unsafe .",
     "lint:fix": "pnpm biome lint --write --unsafe .",
     "lint:turbo": "turbo run lint",
-    "dev:web": "turbo run dev --filter='./apps/web' --filter='./packages/db'",
+    "dev:web": "turbo run dev --filter='./apps/web' --filter='./packages/db' -- --hostname 0.0.0.0"
     "dx": "turbo run dx",
     "tsc": "tsc",
     "test": "turbo run test"
